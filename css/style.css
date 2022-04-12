@@ -3,240 +3,240 @@
     --gallery-height: calc(var(--gallery-width) / 2);
 }
   
-  @media screen and (max-width: calc(1200px + 20px)) {
-    :root {
-      --gallery-width: 600px;
-    }
+@media screen and (max-width: calc(1200px + 20px)) {
+  :root {
+    --gallery-width: 600px;
   }
+}
+
+@media screen and (max-width: calc(600px + 20px)) {
+  :root {
+    --gallery-width: auto;
+    --gallery-height: 300px;
+  }
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: darkgrey;
+}
+
+label {
+  cursor: pointer;
+}
+
+.pallaroid-wrapper {
+  display: block;
+  position: relative;
+  width: var(--gallery-width);
+  border: 10px solid white;
+  border-radius: 10px;
+  background-color: white;
+}
+
+.pallaroid-wrapper::before,
+.pallaroid-wrapper::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  display: block;
+  width: 150px;
+  height: 100px;
+  border-radius: 0px 0px 10px 10px;
+  box-shadow: -10px 10px 2px rgba(0,0,0,0.4);
+  transform: translate(2px ,-6px) rotate(-3deg);
+  z-index: -10;
+}
+
+.pallaroid-wrapper::after {
+  left: 100%;
+  transform: translate(-152px ,-6px) rotate(3deg);
+  box-shadow: 10px 10px 2px rgba(0,0,0,0.4);
+}
+
+.gallery-container {
+  position: relative;
+  width: var(--gallery-width);
+  height: var(--gallery-height);
+  background-color: white;
+  overflow: hidden;
+}
+
+.gallery-container > input {
+  position: absolute;
+  left: -9999px;
+}
+
+.interface-elements {
+  position: relative;
+  display: grid;
+  grid-template-columns: 100px 1fr 100px;
+  opacity: 0.3;
+  z-index: 1;
+}
+
+.interface-elements:hover {
+  opacity: 1;
+}
+
+.buttons-group {
+  display: grid;
+  grid-template-columns: 100px;
+  grid-template-rows: var(--gallery-height);
+  align-items: center;
+  transition: transform 400ms cubic-bezier(.38,.04,.06,1.48);
+  overflow: hidden;
+}
+
+.buttons-group:nth-of-type(1) {
+  transform: translateX(-67px);
+}
+
+.buttons-group:nth-of-type(3) {
+  transform: translateX(67px);
+}
+
+.interface-elements:hover .buttons-group:nth-of-type(1),
+.interface-elements:hover .buttons-group:nth-of-type(3) {
+  transform: translateX(0);
+}
+
+.buttons-group label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  order: 1;
+  height: 80px;
+  margin: 10px;
+  padding: 0;
+  font-size: 50px;
+  border: 0;
+  background-color: lightgrey;
+  border-radius: 50%;
   
-  @media screen and (max-width: calc(600px + 20px)) {
-    :root {
-      --gallery-width: auto;
-      --gallery-height: 300px;
-    }
-  }
-  
-  html,
-  body {
-    margin: 0;
-    padding: 0;
-  }
-  
-  body {
-    display: grid;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    background-color: darkgrey;
-  }
-  
-  label {
-    cursor: pointer;
-  }
-  
-  .pallaroid-wrapper {
-    display: block;
-    position: relative;
-    width: var(--gallery-width);
-    border: 10px solid white;
-    border-radius: 10px;
-    background-color: white;
-  }
-  
-  .pallaroid-wrapper::before,
-  .pallaroid-wrapper::after {
-    content: '';
-    position: absolute;
-    bottom: -10px;
-    display: block;
-    width: 150px;
-    height: 100px;
-    border-radius: 0px 0px 10px 10px;
-    box-shadow: -10px 10px 2px rgba(0,0,0,0.4);
-    transform: translate(2px ,-6px) rotate(-3deg);
-    z-index: -10;
-  }
-  
-  .pallaroid-wrapper::after {
-    left: 100%;
-    transform: translate(-152px ,-6px) rotate(3deg);
-    box-shadow: 10px 10px 2px rgba(0,0,0,0.4);
-  }
-  
-  .gallery-container {
-    position: relative;
-    width: var(--gallery-width);
-    height: var(--gallery-height);
-    background-color: white;
-    overflow: hidden;
-  }
-  
-  .gallery-container > input {
-    position: absolute;
-    left: -9999px;
-  }
-  
-  .interface-elements {
-    position: relative;
-    display: grid;
-    grid-template-columns: 100px 1fr 100px;
-    opacity: 0.3;
-    z-index: 1;
-  }
-  
-  .interface-elements:hover {
-    opacity: 1;
-  }
-  
-  .buttons-group {
-    display: grid;
-    grid-template-columns: 100px;
-    grid-template-rows: var(--gallery-height);
-    align-items: center;
-    transition: transform 400ms cubic-bezier(.38,.04,.06,1.48);
-    overflow: hidden;
-  }
-  
-  .buttons-group:nth-of-type(1) {
-    transform: translateX(-67px);
-  }
-  
-  .buttons-group:nth-of-type(3) {
-    transform: translateX(67px);
-  }
-  
-  .interface-elements:hover .buttons-group:nth-of-type(1),
-  .interface-elements:hover .buttons-group:nth-of-type(3) {
-    transform: translateX(0);
-  }
-  
-  .buttons-group label {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    order: 1;
-    height: 80px;
-    margin: 10px;
-    padding: 0;
-    font-size: 50px;
-    border: 0;
-    background-color: lightgrey;
-    border-radius: 50%;
-    
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;  
-    -khtml-user-select: none;   
-    -moz-user-select: none;      
-    -ms-user-select: none;       
-    user-select: none;
-  }
-  
-  .custom-radio-buttons {
-    display: grid;
-    grid-auto-flow: column;
-    gap: 10px;
-    align-items: flex-end;
-    justify-content: center;
-    height: calc(var(--gallery-height) - 10px);
-    transform: translateY(30px);
-  }
-  
-  .custom-radio-buttons label {
-    width: 10px;
-    height: 10px;
-    border: 3px solid white;
-    border-radius: 50%;
-    background-color: lightgrey;
-    transition: transform 300ms cubic-bezier(.38,.04,.41,1.6) 150ms;
-  }
-  
-  .custom-radio-buttons label:nth-of-type(2) {
-    transition-delay: 200ms;
-  }
-  .custom-radio-buttons label:nth-of-type(3) {
-    transition-delay: 250ms;
-  }
-  .custom-radio-buttons label:nth-of-type(4) {
-    transition-delay: 300ms;
-  }
-  .custom-radio-buttons label:nth-of-type(5) {
-    transition-delay: 350ms;
-  }
-  .custom-radio-buttons label:nth-of-type(6) {
-    transition-delay: 400ms;
-  }
-  
-  .interface-elements:hover .custom-radio-buttons label {
-    transform: translateY(-30px);
-  }
-  
-  .img-group {
-    position: absolute;
-    top: 0;
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: var(--gallery-height);
-    align-items: stretch;
-    width: var(--gallery-width);
-    height: var(--gallery-height);
-    border-radius: 10px;
-    overflow: hidden;
-  }
-  
-  .img-group .img-placeholder {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: var(--gallery-width);
-    height: var(--gallery-height); 
-    order: 1;
-    background-color: black;
-  }
-  
-  .img-placeholder img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-  }
-  
-  /* Simply changes orders of grid elements like buttons and images */
-  /* You can call it CSS-logic (or shitcode) XD */
-  input[id="button-1"]:checked ~ .interface-elements .buttons-group:nth-of-type(1) .button-1-back,
-  input[id="button-1"]:checked ~ .interface-elements .buttons-group:nth-of-type(3) .button-1-forward,
-  input[id="button-2"]:checked ~ .interface-elements .buttons-group:nth-of-type(1) .button-2-back,
-  input[id="button-2"]:checked ~ .interface-elements .buttons-group:nth-of-type(3) .button-2-forward,
-  input[id="button-3"]:checked ~ .interface-elements .buttons-group:nth-of-type(1) .button-3-back,
-  input[id="button-3"]:checked ~ .interface-elements .buttons-group:nth-of-type(3) .button-3-forward,
-  input[id="button-4"]:checked ~ .interface-elements .buttons-group:nth-of-type(1) .button-4-back,
-  input[id="button-4"]:checked ~ .interface-elements .buttons-group:nth-of-type(3) .button-4-forward,
-  input[id="button-5"]:checked ~ .interface-elements .buttons-group:nth-of-type(1) .button-5-back,
-  input[id="button-5"]:checked ~ .interface-elements .buttons-group:nth-of-type(3) .button-5-forward,
-  input[id="button-6"]:checked ~ .interface-elements .buttons-group:nth-of-type(1) .button-6-back,
-  input[id="button-6"]:checked ~ .interface-elements .buttons-group:nth-of-type(3) .button-6-forward,
-  input[id="button-1"]:checked ~ .img-group .img-placeholder:nth-of-type(1),
-  input[id="button-2"]:checked ~ .img-group .img-placeholder:nth-of-type(2),
-  input[id="button-3"]:checked ~ .img-group .img-placeholder:nth-of-type(3),
-  input[id="button-4"]:checked ~ .img-group .img-placeholder:nth-of-type(4),
-  input[id="button-5"]:checked ~ .img-group .img-placeholder:nth-of-type(5),
-  input[id="button-6"]:checked ~ .img-group .img-placeholder:nth-of-type(6) {
-    order: 0;
-  }
-  
-  /* Styles thats makes fake radio-buttons "checkable" */
-  input[id="button-1"]:checked ~ .interface-elements .custom-radio-buttons label[for="button-1"],
-  input[id="button-2"]:checked ~ .interface-elements .custom-radio-buttons label[for="button-2"],
-  input[id="button-3"]:checked ~ .interface-elements .custom-radio-buttons label[for="button-3"],
-  input[id="button-4"]:checked ~ .interface-elements .custom-radio-buttons label[for="button-4"],
-  input[id="button-5"]:checked ~ .interface-elements .custom-radio-buttons label[for="button-5"],
-  input[id="button-6"]:checked ~ .interface-elements .custom-radio-buttons label[for="button-6"] {
-    background-color: grey;
-  }
-  
-  /* Make buttons "disabled" */
-  input[id="button-1"]:checked ~ .interface-elements .buttons-group:nth-of-type(1) .button-1-back,
-  input[id="button-6"]:checked ~ .interface-elements .buttons-group:nth-of-type(3) .button-6-forward {
-    color: darkgrey;
-    background-color: grey;
-    cursor: not-allowed;
-  }
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;  
+  -khtml-user-select: none;   
+  -moz-user-select: none;      
+  -ms-user-select: none;       
+  user-select: none;
+}
+
+.custom-radio-buttons {
+  display: grid;
+  grid-auto-flow: column;
+  gap: 10px;
+  align-items: flex-end;
+  justify-content: center;
+  height: calc(var(--gallery-height) - 10px);
+  transform: translateY(30px);
+}
+
+.custom-radio-buttons label {
+  width: 10px;
+  height: 10px;
+  border: 3px solid white;
+  border-radius: 50%;
+  background-color: lightgrey;
+  transition: transform 300ms cubic-bezier(.38,.04,.41,1.6) 150ms;
+}
+
+.custom-radio-buttons label:nth-of-type(2) {
+  transition-delay: 200ms;
+}
+.custom-radio-buttons label:nth-of-type(3) {
+  transition-delay: 250ms;
+}
+.custom-radio-buttons label:nth-of-type(4) {
+  transition-delay: 300ms;
+}
+.custom-radio-buttons label:nth-of-type(5) {
+  transition-delay: 350ms;
+}
+.custom-radio-buttons label:nth-of-type(6) {
+  transition-delay: 400ms;
+}
+
+.interface-elements:hover .custom-radio-buttons label {
+  transform: translateY(-30px);
+}
+
+.img-group {
+  position: absolute;
+  top: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: var(--gallery-height);
+  align-items: stretch;
+  width: var(--gallery-width);
+  height: var(--gallery-height);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.img-group .img-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--gallery-width);
+  height: var(--gallery-height); 
+  order: 1;
+  background-color: black;
+}
+
+.img-placeholder img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* Simply changes orders of grid elements like buttons and images */
+/* You can call it CSS-logic (or shitcode) XD */
+input[id="button-1"]:checked ~ .interface-elements .buttons-group:nth-of-type(1) .button-1-back,
+input[id="button-1"]:checked ~ .interface-elements .buttons-group:nth-of-type(3) .button-1-forward,
+input[id="button-2"]:checked ~ .interface-elements .buttons-group:nth-of-type(1) .button-2-back,
+input[id="button-2"]:checked ~ .interface-elements .buttons-group:nth-of-type(3) .button-2-forward,
+input[id="button-3"]:checked ~ .interface-elements .buttons-group:nth-of-type(1) .button-3-back,
+input[id="button-3"]:checked ~ .interface-elements .buttons-group:nth-of-type(3) .button-3-forward,
+input[id="button-4"]:checked ~ .interface-elements .buttons-group:nth-of-type(1) .button-4-back,
+input[id="button-4"]:checked ~ .interface-elements .buttons-group:nth-of-type(3) .button-4-forward,
+input[id="button-5"]:checked ~ .interface-elements .buttons-group:nth-of-type(1) .button-5-back,
+input[id="button-5"]:checked ~ .interface-elements .buttons-group:nth-of-type(3) .button-5-forward,
+input[id="button-6"]:checked ~ .interface-elements .buttons-group:nth-of-type(1) .button-6-back,
+input[id="button-6"]:checked ~ .interface-elements .buttons-group:nth-of-type(3) .button-6-forward,
+input[id="button-1"]:checked ~ .img-group .img-placeholder:nth-of-type(1),
+input[id="button-2"]:checked ~ .img-group .img-placeholder:nth-of-type(2),
+input[id="button-3"]:checked ~ .img-group .img-placeholder:nth-of-type(3),
+input[id="button-4"]:checked ~ .img-group .img-placeholder:nth-of-type(4),
+input[id="button-5"]:checked ~ .img-group .img-placeholder:nth-of-type(5),
+input[id="button-6"]:checked ~ .img-group .img-placeholder:nth-of-type(6) {
+  order: 0;
+}
+
+/* Styles thats makes fake radio-buttons "checkable" */
+input[id="button-1"]:checked ~ .interface-elements .custom-radio-buttons label[for="button-1"],
+input[id="button-2"]:checked ~ .interface-elements .custom-radio-buttons label[for="button-2"],
+input[id="button-3"]:checked ~ .interface-elements .custom-radio-buttons label[for="button-3"],
+input[id="button-4"]:checked ~ .interface-elements .custom-radio-buttons label[for="button-4"],
+input[id="button-5"]:checked ~ .interface-elements .custom-radio-buttons label[for="button-5"],
+input[id="button-6"]:checked ~ .interface-elements .custom-radio-buttons label[for="button-6"] {
+  background-color: grey;
+}
+
+/* Make buttons "disabled" */
+input[id="button-1"]:checked ~ .interface-elements .buttons-group:nth-of-type(1) .button-1-back,
+input[id="button-6"]:checked ~ .interface-elements .buttons-group:nth-of-type(3) .button-6-forward {
+  color: darkgrey;
+  background-color: grey;
+  cursor: not-allowed;
+}
